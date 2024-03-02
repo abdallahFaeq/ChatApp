@@ -4,6 +4,8 @@ plugins {
     id("kotlin-kapt")
     id("com.google.gms.google-services")
     id("kotlin-parcelize")
+    // safe args with navigtion component
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -56,4 +58,10 @@ dependencies {
     val lifecycle_version = "2.7.0"
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+
+    // navigation component dependency
+    val nav_version = "2.7.6"
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 }
