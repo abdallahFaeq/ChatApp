@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.chatapp.ui.add_room.AddRoomViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.add_room.AddRoomActivity">
+        <EditText
+            android:id="@+id/room_name_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Room name"
+            android:text="@={vm.roomName}"/>
+        <TextView
+            android:id="@+id/name_error_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="please enter room name"
+            android:textColor="@color/red"
+            android:layout_marginStart="10dp"
+            android:error_visibility="@{vm.roomName}"/>
+        <EditText
+            android:id="@+id/room_desc_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="description"
+            android:lines="4"
+            android:maxLines="6"
+            android:gravity="top"
+            android:text="@={vm.roomDesc}"/>
+        <TextView
+            android:id="@+id/desc_error_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="please enter description to this room"
+            android:textColor="@color/red"
+            android:layout_marginStart="10dp"
+            android:error_visibility="@{vm.roomDesc}"/>
+        <Button
+            android:id="@+id/save_room_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:onClick="@{()->vm.saveRoom()}"/>
+    </LinearLayout>
+</layout>

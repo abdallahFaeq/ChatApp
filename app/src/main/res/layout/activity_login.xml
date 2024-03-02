@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="loginVM"
+            type="com.example.chatapp.ui.login.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.login.LoginActivity">
+
+        <EditText
+            android:id="@+id/email_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="email"
+            android:text="@={loginVM.email}"/>
+
+        <TextView
+            android:id="@+id/error_email_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="please enter valid email"
+            android:textColor="@color/red"
+            android:layout_marginStart="10dp"
+            android:visibility="@{loginVM.emailError?View.VISIBLE:View.GONE}"
+            android:error_visibility="@{loginVM.email}"/>
+
+        <EditText
+            android:id="@+id/password_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="password"
+            android:text="@={loginVM.password}"/>
+
+        <TextView
+            android:id="@+id/error_pass_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="password should be at least 6 characters"
+            android:textColor="@color/red"
+            android:layout_marginStart="10dp"
+            android:visibility="@{loginVM.passwordError?View.VISIBLE:View.GONE}"
+            android:error_visibility="@{loginVM.password}"/>
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:onClick="@{()->loginVM.login()}"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have account?" />
+            <TextView
+                android:id="@+id/navigate_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="create an account from here"
+                android:textColor="@color/red"
+                android:onClick="@{()->loginVM.gotoRegisteration()}"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
